@@ -1,0 +1,27 @@
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/spectre.css/dist/spectre.min.css"
+/>
+<div style="display: flex; flex-direction: column; padding: 16px; height: 100%">
+  <div style="flex: 1">
+    <div>
+      <input name="order" type="radio" value="asc" id="asc" checked />
+      <label class="small" for="asc"><small>A - Z</small></label>
+    </div>
+    <div>
+      <input name="order" type="radio" id="asc" value="desc" />
+      <label class="label-inline" for="desc"><small>Z - A</small></label>
+    </div>
+  </div>
+  <button class="btn" id="sort">Sort Layers</button>
+</div>
+<script>
+  document.getElementById("sort").onclick = () => {
+    const order = document.querySelector("input[name=order]:checked").value;
+    parent.postMessage({ pluginMessage: { type: "sort", order } }, "*");
+  };
+
+  document.getElementById("cancel").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
+  };
+</script>

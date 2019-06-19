@@ -1,0 +1,12 @@
+{
+  "name": "sort-me-figma",
+  "version": "0.1.0",
+  "main": "code.js",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.5.2"
+  },
+  "scripts": {
+    "build": "tsc -w"
+  }
+}
