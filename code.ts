@@ -14,9 +14,13 @@ figma.ui.onmessage = msg => {
       })
       .sort((a, b) => {
         if (msg.order === "desc") {
-          return a.node.name < b.node.name ? -1 : 1;
+          return a.node.name.localeCompare(b.node.name, undefined, {
+            numeric: true
+          });
         }
-        return a.node.name < b.node.name ? 1 : -1;
+        return b.node.name.localeCompare(a.node.name, undefined, {
+          numeric: true
+        });
       })
       .forEach((obj, i) => {
         obj.parent.insertChild(i, obj.node);

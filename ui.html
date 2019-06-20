@@ -20,8 +20,4 @@
     const order = document.querySelector("input[name=order]:checked").value;
     parent.postMessage({ pluginMessage: { type: "sort", order } }, "*");
   };
-
-  document.getElementById("cancel").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
-  };
 </script>
