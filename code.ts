@@ -2,11 +2,15 @@ figma.showUI(__html__, { height: 136 });
 
 figma.ui.onmessage = msg => {
   if (msg.type === "sort") {
-    figma.currentPage.selection
+    // Some Big number
+    let startingIndex = 100000;
+
+    const sorted = figma.currentPage.selection
       .map(node => {
         const parent = node.parent;
+        startingIndex = Math.min(startingIndex, parent.children.indexOf(node));
+
         const clone = node.clone();
-        node.remove();
         return {
           node: clone,
           parent
@@ -21,10 +25,17 @@ figma.ui.onmessage = msg => {
         return b.node.name.localeCompare(a.node.name, undefined, {
           numeric: true
         });
-      })
-      .forEach((obj, i) => {
-        obj.parent.insertChild(i, obj.node);
       });
+
+    // Insert sorted nodes
+    sorted.forEach((obj, i) => {
+      obj.parent.insertChild(startingIndex + i, obj.node);
+    });
+
+    // Remove old nodes
+    figma.currentPage.selection.forEach(node => {
+      node.remove();
+    });
   }
 
   figma.closePlugin();
