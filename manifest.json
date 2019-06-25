@@ -1,7 +1,16 @@
 {
-  "name": "figma-sort-it",
+  "name": "Sort It",
   "id": "eoyTxoNIm4La7IV1D0GMvv",
   "version": "0.5.0",
-  "html": "ui.html",
-  "script": "code.js"
+  "script": "code.js",
+  "menu": [
+    {
+      "name": "Sort A-Z",
+      "command": "asc"
+    },
+    {
+      "name": "Sort Z-A",
+      "command": "desc"
+    }
+  ]
 }
