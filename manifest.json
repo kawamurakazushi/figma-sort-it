@@ -1,8 +1,8 @@
 {
   "name": "Sort It",
-  "id": "eoyTxoNIm4La7IV1D0GMvv",
-  "version": "0.5.0",
-  "script": "code.js",
+  "id": "731324768889901500",
+  "api": "0.6.0",
+  "main": "code.js",
   "menu": [
     {
       "name": "Sort A-Z",
