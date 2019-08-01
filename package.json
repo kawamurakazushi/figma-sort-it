@@ -1,5 +1,5 @@
 {
-  "name": "sort-me-figma",
+  "name": "figma-sort-it",
   "version": "0.1.0",
   "main": "code.js",
   "license": "MIT",
@@ -7,6 +7,7 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
-    "build": "tsc -w"
+    "build": "tsc",
+    "watch": "tsc -w"
   }
 }
