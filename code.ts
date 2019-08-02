@@ -1,35 +1,25 @@
-// Some Big number
 let startingIndex = 100000;
 
 const sorted = figma.currentPage.selection
   .map(node => {
     const parent = node.parent;
     startingIndex = Math.min(startingIndex, parent.children.indexOf(node));
-
     return {
-      node: node.clone(),
+      node,
       parent
     };
   })
-  .sort((a, b) => {
-    if (figma.command === "desc") {
-      return a.node.name.localeCompare(b.node.name, undefined, {
-        numeric: true
-      });
-    }
-    return b.node.name.localeCompare(a.node.name, undefined, {
-      numeric: true
-    });
+  .sort((a, b) =>
+    figma.command === "desc"
+      ? a.node.name.localeCompare(b.node.name, undefined, {
+          numeric: true
+        })
+      : b.node.name.localeCompare(a.node.name, undefined, {
+          numeric: true
+        })
+  )
+  .forEach((obj, i) => {
+    obj.parent.insertChild(startingIndex + i, obj.node);
   });
 
-// Insert sorted nodes
-sorted.forEach((obj, i) => {
-  obj.parent.insertChild(startingIndex + i, obj.node);
-});
-
-// Remove old nodes
-figma.currentPage.selection.forEach(node => {
-  node.remove();
-});
-
-figma.closePlugin();
+figma.closePlugin("Successfully sorted!");
