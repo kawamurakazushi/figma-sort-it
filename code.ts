@@ -11,10 +11,10 @@ const sorted = figma.currentPage.selection
   })
   .sort((a, b) =>
     figma.command === "desc"
-      ? a.node.name.localeCompare(b.node.name, undefined, {
+      ? a.node.name.toLocaleLowerCase().localeCompare(b.node.name.toLocaleLowerCase(), undefined, {
           numeric: true
         })
-      : b.node.name.localeCompare(a.node.name, undefined, {
+      : b.node.name.toLocaleLowerCase().localeCompare(a.node.name.toLocaleLowerCase(), undefined, {
           numeric: true
         })
   )
